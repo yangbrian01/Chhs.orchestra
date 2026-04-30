@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忠信壯我管樂團 | 首頁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* 基礎設定 */
+        :root {
+            --primary-color: #1a365d; /* 深藍色，帶有學校莊重感 */
+            --secondary-color: #c5a059; /* 金色，適合管樂團的點綴 */
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        /* 導覽列 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* 漢堡選單 (手機版) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 視覺主圖區 (Hero Section) */
+        .hero {
+            /* 這裡可以換成你們樂團的大合照圖片網址 */
+            background: linear-gradient(rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.7)), url('https://images.unsplash.com/photo-1574156814674-ce4fd1c9f4d2?q=80&w=2070&auto=format&fit=crop') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p.quote {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        /* 內容區塊 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+
+        .history-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .oath {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            font-style: italic;
+            text-align: justify;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .oath::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary-color);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.5;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #112240;
+            color: #8892b0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 響應式設計 (手機版適配) */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                text-align: center;
+                padding: 20px 0;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p.quote {
+                font-size: 1.2rem;
+            }
+            .history-content, .oath {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">忠信壯我管樂團</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">幹部</a></li>
+                <li><a href="#">社員</a></li>
+                <li><a href="#">指揮</a></li>
+                <li><a href="#">樂器介紹</a></li>
+                <li><a href="#">表演</a></li>
+                <li><a href="#">加入我們</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>壯我管樂團</h1>
+        <p class="quote">「渡頭霜雪今勝昔，壯我新鞋第一痕」</p>
+    </section>
+
+    <div class="container">
+        
+        <h2 class="section-title">社團歷史</h2>
+        <div class="history-content">
+            <p>忠信管樂團成立於2003年9月，於2012年3月29日，忠信43週年校慶日正式宣誓授旗成軍，並由忠信學校前校長高天極老師親自授旗並正名為「忠信壯我管樂團」。</p>
+            <p>壯我管樂團是由一群熱愛管樂的同學所組成，團員來自全校各班，經甄選後加入樂團。樂團的中心思想是發揚忠信「樂觀奮鬥‧允執厥中」的校訓精神。</p>
+        </div>
+
+        <h2 class="section-title">授旗誓詞</h2>
+        <div class="oath">
+            西曆2012年，歲在壬辰，忠信四十二週歲之當日，忠信壯我軍樂團55名團員在此莊嚴宣誓：<br><br>
+            從今天開始，我們的名字叫壯我；「江山霧裡」迴盪著我們的號角，「渡頭霜雪」印刻著我們的名字；我們永遠不辜負我們的名字，不或忘壯我的思想、壯我的精神、壯我的體魄。<br><br>
+            我們今日是一個團體，我們永遠是一個團體，我們共同用音樂寫下忠信艱辛的歷史，用汗水譜出忠信美麗的樂章。
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 忠信壯我管樂團. All rights reserved.</p>
+        <p>樂觀奮鬥 ‧ 允執厥中</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("nav-menu");
+            if (menu.className === "active") {
+                menu.className = "";
+            } else {
+                menu.className = "active";
+            }
+        }
+    </script>
+
+</body>
+</html>
