@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>忠信壯我管樂團 | CHHS Orchestra</title>
+    <title>忠信壯我管樂團</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -14,133 +14,212 @@
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                         serif: ['"Noto Serif TC"', 'serif'],
                     },
+                    colors: {
+                        chblue: '#1a365d',  /* 忠信藍 */
+                        chgold: '#c5a059',  /* 榮耀金 */
+                        chlight: '#f8fafc', /* 背景灰白 */
+                    }
                 }
             }
         }
     </script>
     <style>
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .nav-blur { background: rgba(0, 0, 0, 0.6); backdrop-filter: saturate(180%) blur(20px); }
-        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 20px; }
-        .active-link { color: #fff !important; border-bottom: 2px solid #fff; }
+        /* 導覽列滾動時的陰影效果 */
+        .nav-scrolled { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        /* 確保點擊錨點時，不會被導覽列遮擋標題 */
+        section { scroll-margin-top: 5rem; }
     </style>
 </head>
-<body class="bg-black text-white antialiased">
+<body class="bg-chlight text-gray-800 antialiased selection:bg-chgold selection:text-white">
 
-    <nav class="fixed w-full z-50 nav-blur border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-            <a href="#home" class="text-sm font-bold tracking-[0.2em]">壯我管樂團</a>
-            <div class="hidden md:flex space-x-8 text-[12px] tracking-widest text-gray-400">
-                <a href="#home" class="hover:text-white transition-colors nav-item">首頁</a>
-                <a href="#history" class="hover:text-white transition-colors nav-item">歷史</a>
-                <a href="#leaders" class="hover:text-white transition-colors nav-item">幹部</a>
-                <a href="#members" class="hover:text-white transition-colors nav-item">社員</a>
-                <a href="#instruments" class="hover:text-white transition-colors nav-item">樂器</a>
-                <a href="#join" class="hover:text-white transition-colors nav-item">加入</a>
+    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#home" class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-chblue tracking-wider font-serif">壯我管樂團</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-1">
+                    <a href="#home" class="nav-item px-4 py-2 text-gray-600 hover:text-chblue hover:bg-blue-50 rounded-md transition-colors font-medium">首頁</a>
+                    <a href="#history" class="nav-item px-4 py-2 text-gray-600 hover:text-chblue hover:bg-blue-50 rounded-md transition-colors font-medium">歷史與誓詞</a>
+                    <a href="#conductor" class="nav-item px-4 py-2 text-gray-600 hover:text-chblue hover:bg-blue-50 rounded-md transition-colors font-medium">指揮</a>
+                    <a href="#leaders" class="nav-item px-4 py-2 text-gray-600 hover:text-chblue hover:bg-blue-50 rounded-md transition-colors font-medium">幹部與社員</a>
+                    <a href="#instruments" class="nav-item px-4 py-2 text-gray-600 hover:text-chblue hover:bg-blue-50 rounded-md transition-colors font-medium">樂器介紹</a>
+                </div>
             </div>
-            <button class="md:hidden text-white">☰</button>
         </div>
     </nav>
 
-    <section id="home" class="relative">
+    <section id="home" class="relative pt-20 h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=2000" class="w-full h-full object-cover opacity-50">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black"></div>
+            <img src="https://images.unsplash.com/photo-1574156814674-ce4fd1c9f4d2?q=80&w=2070&auto=format&fit=crop" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-chblue/70 mix-blend-multiply"></div>
         </div>
-        <div class="relative z-10 text-center">
-            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-4 animate-fade-in">壯我管樂團</h1>
-            <p class="text-xl md:text-2xl font-serif text-gray-300 font-light tracking-[0.3em]">「渡頭霜雪今勝昔，壯我新鞋第一痕」</p>
-        </div>
-        <div class="absolute bottom-10 animate-bounce">
-            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2"></path></svg>
-        </div>
-    </section>
-
-    <section id="history" class="bg-[#050505]">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-sm tracking-[0.5em] text-gray-500 mb-8 uppercase font-bold">Heritage</h2>
-            <p class="text-2xl md:text-4xl leading-relaxed font-light text-gray-200">
-                2012 年 3 月 29 日，忠信 43 週年校慶日。<br>
-                由前校長高天極老師親自正名成軍。<br>
-                我們不僅是樂團，更是一個「壯我」的團體。
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <span class="text-chgold font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Chih-Hsin High School Orchestra</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 drop-shadow-lg">忠信壯我管樂團</h1>
+            <p class="text-xl md:text-2xl text-gray-200 font-light tracking-widest border-t border-white/20 pt-6 inline-block">
+                「渡頭霜雪今勝昔，壯我新鞋第一痕」
             </p>
         </div>
     </section>
 
-    <section id="leaders" class="bg-black">
-        <h2 class="text-sm tracking-[0.5em] text-gray-500 mb-16 uppercase font-bold">Leadership</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full px-6">
-            <div class="glass rounded-3xl p-8 hover:bg-white/5 transition-all">
-                <div class="text-gray-500 text-xs mb-2">指揮 / Conductor</div>
-                <div class="text-2xl font-bold mb-4">專業指揮老師</div>
-                <p class="text-gray-400 text-sm leading-relaxed">引領樂團呼吸，詮釋音符背後的深層靈魂。</p>
-            </div>
-            <div class="glass rounded-3xl p-8 hover:bg-white/5 transition-all">
-                <div class="text-gray-500 text-xs mb-2">團長 / President</div>
-                <div class="text-2xl font-bold mb-4">核心行政團隊</div>
-                <p class="text-gray-400 text-sm leading-relaxed">協調樂團事務，是樂團穩定運作的最強後盾。</p>
-            </div>
-            <div class="glass rounded-3xl p-8 hover:bg-white/5 transition-all">
-                <div class="text-gray-500 text-xs mb-2">譜管 / Library</div>
-                <div class="text-2xl font-bold mb-4">音樂守護者</div>
-                <p class="text-gray-400 text-sm leading-relaxed">管理珍貴樂譜，確保每一次練習的精確與完美。</p>
+    <section id="history" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div>
+                    <h2 class="text-sm font-bold text-chgold tracking-widest uppercase mb-2">Our History</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-chblue mb-6">社團歷史</h3>
+                    <div class="space-y-4 text-gray-600 leading-relaxed text-lg">
+                        <p>忠信管樂團成立於 <strong>2003 年 9 月</strong>。</p>
+                        <p>於 <strong>2012 年 3 月 29 日</strong>，忠信 43 週年校慶日正式宣誓授旗成軍，並由忠信學校前校長高天極老師親自授旗並正名為「<strong>忠信壯我管樂團</strong>」。</p>
+                        <p>壯我管樂團是由一群熱愛管樂的同學所組成，團員來自全校各班，經甄選後加入樂團。樂團的中心思想是發揚忠信「樂觀奮鬥 ‧ 允執厥中」的校訓精神。</p>
+                    </div>
+                </div>
+
+                <div class="bg-chblue rounded-2xl p-10 shadow-xl relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 text-9xl text-white/5 font-serif">"</div>
+                    <h3 class="text-2xl font-bold text-white mb-6 relative z-10">授旗誓詞</h3>
+                    <div class="text-blue-100 space-y-4 leading-loose relative z-10">
+                        <p class="italic text-chgold">西曆2012年，歲在壬辰，忠信四十二週歲之當日，忠信壯我軍樂團55名團員在此莊嚴宣誓：</p>
+                        <p>從今天開始，我們的名字叫壯我；「江山霧裡」迴盪著我們的號角，「渡頭霜雪」印刻著我們的名字；我們永遠不辜負我們的名字，不或忘壯我的思想、壯我的精神、壯我的體魄。</p>
+                        <p>我們今日是一個團體，我們永遠是一個團體，我們共同用音樂寫下忠信艱辛的歷史，用汗水譜出忠信美麗的樂章。</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="instruments" class="bg-[#050505]">
-        <h2 class="text-sm tracking-[0.5em] text-gray-500 mb-16 uppercase font-bold">Instruments</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full px-6 text-center">
-            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
-                <div class="text-3xl mb-2">🎺</div>
-                <div class="text-sm tracking-widest">高音銅管</div>
-            </div>
-            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
-                <div class="text-3xl mb-2">🎷</div>
-                <div class="text-sm tracking-widest">木管樂器</div>
-            </div>
-            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
-                <div class="text-3xl mb-2">📯</div>
-                <div class="text-sm tracking-widest">中音銅管</div>
-            </div>
-            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
-                <div class="text-3xl mb-2">🥁</div>
-                <div class="text-sm tracking-widest">打擊樂部</div>
+    <section id="conductor" class="py-24 bg-chlight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-sm font-bold text-chgold tracking-widest uppercase mb-2">Conductor</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-chblue mb-16">樂團指揮</h3>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 text-left border-t-4 border-chgold">
+                <div class="w-48 h-48 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1506869640319-fea1a2ab8e40?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-2">指揮老師姓名</h4>
+                    <p class="text-chgold font-medium mb-4">音樂總監 / 常任指揮</p>
+                    <p class="text-gray-600 leading-relaxed">在這裡介紹指揮老師的學經歷、音樂背景，以及帶領壯我管樂團的理念。指揮是樂團的靈魂，帶領每一聲部的呼吸與樂句的詮釋，引領樂團在各大比賽與展演中追求卓越。</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="join" class="bg-black text-center">
-        <h2 class="text-5xl md:text-7xl font-bold mb-10 tracking-tighter">準備好加入我們了嗎？</h2>
-        <a href="#" class="px-12 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-all text-sm tracking-[0.2em]">立即申請甄選</a>
-        <p class="mt-10 text-gray-500 text-sm tracking-widest">與我們共同譜寫忠信美麗的樂章</p>
+    <section id="leaders" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-chgold tracking-widest uppercase mb-2">Members</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-chblue">幹部陣容</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-chlight p-8 rounded-xl text-center hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="w-24 h-24 bg-chblue text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-4 font-serif">長</div>
+                    <h4 class="text-xl font-bold text-gray-900">團長</h4>
+                    <p class="text-gray-500 mt-2">統籌樂團大小事務，是社員與指導老師之間的最佳橋樑。</p>
+                </div>
+                <div class="bg-chlight p-8 rounded-xl text-center hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="w-24 h-24 bg-chblue text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-4 font-serif">副</div>
+                    <h4 class="text-xl font-bold text-gray-900">副團長</h4>
+                    <p class="text-gray-500 mt-2">協助團長處理行政作業，並監督各聲部練習狀況。</p>
+                </div>
+                <div class="bg-chlight p-8 rounded-xl text-center hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="w-24 h-24 bg-chblue text-white rounded-full flex items-center justify-center text-3xl mx-auto mb-4 font-serif">譜</div>
+                    <h4 class="text-xl font-bold text-gray-900">譜管</h4>
+                    <p class="text-gray-500 mt-2">細心管理所有樂譜資產，確保排練時大家都有譜可看。</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer class="py-10 border-t border-white/10 text-center text-[10px] text-gray-600 tracking-[0.3em] uppercase">
-        © 2026 CHHS Orchestra / 樂觀奮鬥 允執厥中
+    <section id="instruments" class="py-24 bg-chblue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold text-chgold tracking-widest uppercase mb-2">Instruments</h2>
+                <h3 class="text-3xl md:text-4xl font-bold">編制與聲部</h3>
+                <p class="mt-4 text-blue-200">壯我管樂團擁有完整的管樂編制，交織出最震撼的音牆。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm border border-white/20">
+                    <h4 class="text-xl font-bold text-chgold mb-4 border-b border-white/20 pb-2">木管組 Woodwinds</h4>
+                    <ul class="space-y-2 text-blue-100">
+                        <li>長笛 (Flute)</li>
+                        <li>單簧管 (Clarinet)</li>
+                        <li>薩克斯風 (Saxophone)</li>
+                        <li>雙簧管 (Oboe)</li>
+                    </ul>
+                </div>
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm border border-white/20">
+                    <h4 class="text-xl font-bold text-chgold mb-4 border-b border-white/20 pb-2">銅管組 Brass (High)</h4>
+                    <ul class="space-y-2 text-blue-100">
+                        <li>小號 (Trumpet)</li>
+                        <li>法國號 (French Horn)</li>
+                    </ul>
+                </div>
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm border border-white/20">
+                    <h4 class="text-xl font-bold text-chgold mb-4 border-b border-white/20 pb-2">銅管組 Brass (Low)</h4>
+                    <ul class="space-y-2 text-blue-100">
+                        <li>長號 (Trombone)</li>
+                        <li class="font-bold text-white">上低音號 (Euphonium)</li>
+                        <li>低音號 (Tuba)</li>
+                    </ul>
+                </div>
+                <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm border border-white/20">
+                    <h4 class="text-xl font-bold text-chgold mb-4 border-b border-white/20 pb-2">打擊組 Percussion</h4>
+                    <ul class="space-y-2 text-blue-100">
+                        <li>定音鼓 (Timpani)</li>
+                        <li>小鼓 / 大鼓</li>
+                        <li>木琴 / 鐵琴</li>
+                        <li>爵士鼓 (Drum Set)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center">
+        <p class="text-lg font-serif text-white tracking-widest mb-4">樂觀奮鬥 ‧ 允執厥中</p>
+        <p class="text-sm">&copy; 2026 忠信壯我管樂團 CHHS Orchestra. All rights reserved.</p>
     </footer>
 
     <script>
-        // 控制導覽列高亮
-        const sections = document.querySelectorAll("section");
-        const navItems = document.querySelectorAll(".nav-item");
+        const navbar = document.getElementById('navbar');
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
 
-        window.onscroll = () => {
-            let current = "";
-            sections.forEach((section) => {
+        window.addEventListener('scroll', () => {
+            // 導覽列陰影
+            if (window.scrollY > 10) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+
+            // 選單高亮
+            let current = '';
+            sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 60) {
-                    current = section.getAttribute("id");
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
                 }
             });
 
-            navItems.forEach((item) => {
-                item.classList.remove("active-link");
-                if (item.getAttribute("href").includes(current)) {
-                    item.classList.add("active-link");
+            navItems.forEach(item => {
+                item.classList.remove('text-chblue', 'bg-blue-50', 'font-bold');
+                if (item.getAttribute('href').substring(1) === current) {
+                    item.classList.add('text-chblue', 'bg-blue-50', 'font-bold');
                 }
             });
-        };
+        });
     </script>
+
 </body>
 </html>
