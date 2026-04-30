@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>忠信壯我管樂團</title>
+    <title>忠信壯我管樂團 | CHHS Orchestra</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -14,152 +14,133 @@
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                         serif: ['"Noto Serif TC"', 'serif'],
                     },
-                    colors: {
-                        appleGray: '#f5f5f7',
-                        appleDark: '#1d1d1f',
-                    }
                 }
             }
         }
     </script>
     <style>
-        /* Apple 風格毛玻璃導覽列 */
-        .glass-nav {
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-        }
-
-        /* 滾動漸入動畫基礎設定 */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 隱藏捲軸但可滾動 */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .nav-blur { background: rgba(0, 0, 0, 0.6); backdrop-filter: saturate(180%) blur(20px); }
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 20px; }
+        .active-link { color: #fff !important; border-bottom: 2px solid #fff; }
     </style>
 </head>
-<body class="bg-appleGray text-appleDark antialiased overflow-x-hidden">
+<body class="bg-black text-white antialiased">
 
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-14">
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-white text-sm font-medium tracking-widest hover:text-gray-300 transition-colors">
-                        壯我管樂團
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#" class="text-gray-200 hover:text-white text-xs font-light tracking-wide transition-colors">首頁</a>
-                        <a href="#" class="text-gray-200 hover:text-white text-xs font-light tracking-wide transition-colors">幹部</a>
-                        <a href="#" class="text-gray-200 hover:text-white text-xs font-light tracking-wide transition-colors">社員</a>
-                        <a href="#" class="text-gray-200 hover:text-white text-xs font-light tracking-wide transition-colors">指揮</a>
-                        <a href="#" class="text-gray-200 hover:text-white text-xs font-light tracking-wide transition-colors">樂器介紹</a>
-                        <a href="#" class="text-gray-200 hover:text-white text-xs font-light tracking-wide transition-colors">加入我們</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" class="text-gray-300 hover:text-white p-2">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
-                </div>
+    <nav class="fixed w-full z-50 nav-blur border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+            <a href="#home" class="text-sm font-bold tracking-[0.2em]">壯我管樂團</a>
+            <div class="hidden md:flex space-x-8 text-[12px] tracking-widest text-gray-400">
+                <a href="#home" class="hover:text-white transition-colors nav-item">首頁</a>
+                <a href="#history" class="hover:text-white transition-colors nav-item">歷史</a>
+                <a href="#leaders" class="hover:text-white transition-colors nav-item">幹部</a>
+                <a href="#members" class="hover:text-white transition-colors nav-item">社員</a>
+                <a href="#instruments" class="hover:text-white transition-colors nav-item">樂器</a>
+                <a href="#join" class="hover:text-white transition-colors nav-item">加入</a>
             </div>
+            <button class="md:hidden text-white">☰</button>
         </div>
     </nav>
 
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" class="relative">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=2070&auto=format&fit=crop" 
-                 alt="Orchestra Background" 
-                 class="w-full h-full object-cover object-center scale-105 animate-[pulse_15s_ease-in-out_infinite_alternate]" />
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-appleGray/90"></div>
+            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=2000" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black"></div>
         </div>
+        <div class="relative z-10 text-center">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-4 animate-fade-in">壯我管樂團</h1>
+            <p class="text-xl md:text-2xl font-serif text-gray-300 font-light tracking-[0.3em]">「渡頭霜雪今勝昔，壯我新鞋第一痕」</p>
+        </div>
+        <div class="absolute bottom-10 animate-bounce">
+            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2"></path></svg>
+        </div>
+    </section>
 
-        <div class="relative z-10 text-center px-4 flex flex-col items-center">
-            <h1 class="text-5xl md:text-8xl font-bold text-white tracking-tighter mb-6 reveal active">
-                忠信壯我管樂團
-            </h1>
-            <p class="text-lg md:text-2xl font-serif text-gray-300 tracking-widest font-light reveal active" style="transition-delay: 200ms;">
-                「渡頭霜雪今勝昔，壯我新鞋第一痕」
+    <section id="history" class="bg-[#050505]">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-sm tracking-[0.5em] text-gray-500 mb-8 uppercase font-bold">Heritage</h2>
+            <p class="text-2xl md:text-4xl leading-relaxed font-light text-gray-200">
+                2012 年 3 月 29 日，忠信 43 週年校慶日。<br>
+                由前校長高天極老師親自正名成軍。<br>
+                我們不僅是樂團，更是一個「壯我」的團體。
             </p>
-            
-            <div class="absolute -bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce reveal active" style="transition-delay: 600ms;">
-                <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+        </div>
+    </section>
+
+    <section id="leaders" class="bg-black">
+        <h2 class="text-sm tracking-[0.5em] text-gray-500 mb-16 uppercase font-bold">Leadership</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full px-6">
+            <div class="glass rounded-3xl p-8 hover:bg-white/5 transition-all">
+                <div class="text-gray-500 text-xs mb-2">指揮 / Conductor</div>
+                <div class="text-2xl font-bold mb-4">專業指揮老師</div>
+                <p class="text-gray-400 text-sm leading-relaxed">引領樂團呼吸，詮釋音符背後的深層靈魂。</p>
+            </div>
+            <div class="glass rounded-3xl p-8 hover:bg-white/5 transition-all">
+                <div class="text-gray-500 text-xs mb-2">團長 / President</div>
+                <div class="text-2xl font-bold mb-4">核心行政團隊</div>
+                <p class="text-gray-400 text-sm leading-relaxed">協調樂團事務，是樂團穩定運作的最強後盾。</p>
+            </div>
+            <div class="glass rounded-3xl p-8 hover:bg-white/5 transition-all">
+                <div class="text-gray-500 text-xs mb-2">譜管 / Library</div>
+                <div class="text-2xl font-bold mb-4">音樂守護者</div>
+                <p class="text-gray-400 text-sm leading-relaxed">管理珍貴樂譜，確保每一次練習的精確與完美。</p>
             </div>
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            
-            <div class="bg-white rounded-[2rem] p-10 md:p-14 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-500 reveal">
-                <h2 class="text-sm font-bold tracking-widest text-gray-400 uppercase mb-3">History</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-appleDark mb-6 tracking-tight">社團歷史</h3>
-                <div class="space-y-4 text-gray-500 font-light leading-relaxed">
-                    <p>忠信管樂團成立於 2003 年 9 月。2012 年 3 月 29 日，於忠信 43 週年校慶日正式宣誓授旗成軍，並由前校長高天極老師親自授旗並正名為「忠信壯我管樂團」。</p>
-                    <p>我們是由一群熱愛管樂的同學組成，團員來自全校各班。樂團的中心思想是發揚忠信「樂觀奮鬥 ‧ 允執厥中」的校訓精神。</p>
-                </div>
+    <section id="instruments" class="bg-[#050505]">
+        <h2 class="text-sm tracking-[0.5em] text-gray-500 mb-16 uppercase font-bold">Instruments</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl w-full px-6 text-center">
+            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
+                <div class="text-3xl mb-2">🎺</div>
+                <div class="text-sm tracking-widest">高音銅管</div>
             </div>
-
-            <div class="bg-appleDark rounded-[2rem] p-10 md:p-14 shadow-2xl reveal" style="transition-delay: 200ms;">
-                <h2 class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-3">The Oath</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">授旗誓詞</h3>
-                <div class="space-y-6 text-gray-300 font-serif leading-loose text-justify">
-                    <p class="italic">「西曆2012年，歲在壬辰，忠信四十二週歲之當日，忠信壯我軍樂團55名團員在此莊嚴宣誓：」</p>
-                    <p>從今天開始，我們的名字叫壯我；「江山霧裡」迴盪著我們的號角，「渡頭霜雪」印刻著我們的名字；我們永遠不辜負我們的名字，不或忘壯我的思想、壯我的精神、壯我的體魄。</p>
-                    <p>我們今日是一個團體，我們永遠是一個團體，我們共同用音樂寫下忠信艱辛的歷史，用汗水譜出忠信美麗的樂章。</p>
-                </div>
+            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
+                <div class="text-3xl mb-2">🎷</div>
+                <div class="text-sm tracking-widest">木管樂器</div>
             </div>
-
+            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
+                <div class="text-3xl mb-2">📯</div>
+                <div class="text-sm tracking-widest">中音銅管</div>
+            </div>
+            <div class="p-8 border border-white/5 hover:border-white/20 transition-all">
+                <div class="text-3xl mb-2">🥁</div>
+                <div class="text-sm tracking-widest">打擊樂部</div>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 py-12 text-center reveal">
-        <p class="text-xs text-gray-400 tracking-wider">
-            &copy; 2026 忠信壯我管樂團. All rights reserved.
-        </p>
+    <section id="join" class="bg-black text-center">
+        <h2 class="text-5xl md:text-7xl font-bold mb-10 tracking-tighter">準備好加入我們了嗎？</h2>
+        <a href="#" class="px-12 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-all text-sm tracking-[0.2em]">立即申請甄選</a>
+        <p class="mt-10 text-gray-500 text-sm tracking-widest">與我們共同譜寫忠信美麗的樂章</p>
+    </section>
+
+    <footer class="py-10 border-t border-white/10 text-center text-[10px] text-gray-600 tracking-[0.3em] uppercase">
+        © 2026 CHHS Orchestra / 樂觀奮鬥 允執厥中
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const reveals = document.querySelectorAll(".reveal");
-            
-            const revealOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                        // 如果想要動畫只播放一次，可以解除觀察
-                        // observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                root: null,
-                threshold: 0.15, // 元素出現 15% 時觸發動畫
-                rootMargin: "0px"
-            });
+        // 控制導覽列高亮
+        const sections = document.querySelectorAll("section");
+        const navItems = document.querySelectorAll(".nav-item");
 
-            reveals.forEach(reveal => {
-                // 排除已經是 active 的元素 (例如首頁主視覺)
-                if (!reveal.classList.contains('active')) {
-                    revealOnScroll.observe(reveal);
+        window.onscroll = () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute("id");
                 }
             });
-        });
+
+            navItems.forEach((item) => {
+                item.classList.remove("active-link");
+                if (item.getAttribute("href").includes(current)) {
+                    item.classList.add("active-link");
+                }
+            });
+        };
     </script>
 </body>
 </html>
